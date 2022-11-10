@@ -7,7 +7,6 @@
 
 LiquidCrystal_I2C lcd(0x3F,16,2); // LCD I2C 연결
 int SensorVal = 0;
-int pump = 13;
 
 DHT dht(DHTPIN,DHTTYPE);
 
@@ -17,7 +16,6 @@ void setup(){
   lcd.backlight();
   Serial.begin(9600);
   dht.begin();
-  pinMode(pump,OUTPUT);
 }
 
 void loop(){
