@@ -32,7 +32,7 @@ void loop(){
   Serial.print(temperature);
   Serial.print(SensorVal);
 
-  if(Serial.available()){ // if 대신 while로 
+  if(Serial.available()){ 
 
     if(SensorVal <= 900){ // 토양 수분량이 충분하면 Slave에 신호 보냄
     Serial.write('1');
