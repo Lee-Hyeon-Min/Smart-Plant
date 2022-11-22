@@ -34,12 +34,12 @@ void loop(){
 
   if(Serial.available()){ 
 
-    if(SensorVal <= 900){ // 토양 수분량이 충분하면 Slave에 1이란 신호 보냄
-    Serial.write('1');
-  }
-    else if(SensorVal > 900){ // 토양 수분량이 부족하면 Slave에 0이란 신호 보냄
-    Serial.write('0');
-  }
+     if(SensorVal <= 900){ // 토양 수분량이 충분하면 Slave에 1이란 신호 보냄
+     Serial.write('1');
+    }
+     else if(SensorVal > 900){ // 토양 수분량이 부족하면 Slave에 0이란 신호 보냄
+      Serial.write('0');
+    }
 
   }
   lcd.clear();
