@@ -2,7 +2,7 @@
 #include <LiquidCrystal_I2C.h>
 #include <DHT.h>
 
-int pump = 13; // PORTB의 5번 => PB |= 0x20
+int pump = 13; // PORTB의 5번 => DDRB |= 0x20
 
 void setup() {
   Serial.begin(9600);
