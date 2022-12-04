@@ -22,25 +22,33 @@ void loop(){
   float humidity = dht.readHumidity();
   float temperature = dht.readTemperature();
   SensorVal = analogRead(A0Pin);
-  delay(1000);
+  
   lcd.display();
   lcd.print("Temp = ");
   lcd.print(temperature);
   lcd.setCursor(0,1);
   lcd.print("Soil = ");
   lcd.print(SensorVal);
-  Serial.print(temperature);
-  Serial.print(SensorVal);
-
-  if(Serial.available()){ 
-
-     if(SensorVal <= 900){ // 토양 수분량이 충분하면 Slave에 1이란 신호 보냄
+  delay(1000);
+  if(SensorVal <= 900 && temperature < 20){ // 토양 수분량이 충분하면 Slave에 1이란 신호 보냄
      Serial.write('1');
-    }
-     else if(SensorVal > 900){ // 토양 수분량이 부족하면 Slave에 0이란 신호 보냄
-      Serial.write('0');
-    }
-
+     delay(1000);
+     Serial.write('a');
+  }
+  else if(SensorVal > 900 && temperature < 20){ // 토양 수분량이 부족하면 Slave에 0이란 신호 보냄
+     Serial.write('0');
+     delay(1000);
+     Serial.write('a');
+  }
+  if(SensorVal <= 900 && temperature >20){
+     Serial.write('1');
+     delay(1000);
+     Serial.write('b');
+  }
+  else if(SensorVal > 900 && temperature>20){
+     Serial.write('0');
+     delay(1000);
+     Serial.write('b');
   }
   lcd.clear();
 }
