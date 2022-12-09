@@ -30,17 +30,17 @@ void loop(){
   lcd.print("Soil = ");
   lcd.print(SensorVal);
   delay(1000);
-  if(SensorVal <= 900 && temperature < 20){ // 토양 수분량이 충분하면 Slave에 1이란 신호 보냄
+  if(SensorVal <= 900 && temperature < 20){ // 토양 수분량이 충분하면 Slave에 1이란 문자를 보냄, 온도가 낮으면 a라는 문자를 보냄
      Serial.write('1');
      delay(1000);
      Serial.write('a');
   }
-  else if(SensorVal > 900 && temperature < 20){ // 토양 수분량이 부족하면 Slave에 0이란 신호 보냄
+  else if(SensorVal > 900 && temperature < 20){ // 토양 수분량이 부족하면 Slave에 0이란 문자를 보냄
      Serial.write('0');
      delay(1000);
      Serial.write('a');
   }
-  if(SensorVal <= 900 && temperature >20){
+  if(SensorVal <= 900 && temperature >20){ // 온도가 높으면 b라는 문자를 보냄
      Serial.write('1');
      delay(1000);
      Serial.write('b');
